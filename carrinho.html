@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - Streetwear Style</title>
+    <link rel="stylesheet" href="carrinho.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="imagens/Logo loja de roupa minimalista preto.png" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="estoque.html">Coleções</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="carrinho.html">Carrinho</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="carrinho" class="pagina">
+        <h1>Seu Carrinho</h1>
+        <div id="itens-carrinho"></div>
+        
+        <p id="total">Total: R$ 0,00</p>
+        
+        <button id="limpar-carrinho">Limpar Carrinho</button>
+        <button id="compras"><a href="imagens/AINDA NÃO TEMOS A MARCA, POR QUE SOMOS POBRES, MAS SE QUISER FAZER O PIX PRA AJUDAR 06927345035 ARTHUR PEREIRA MACHADO.png">FINALIZAR COMPRA</a></button>
+    </section>
+    
+    <footer>
+        <p>&copy; Todos direitos a Suetam e Manu Bittencourt. <a id="contato" href="https://wa.me/5551998190603" target="_blank"><br>☎️ CLIQUE AQUI PARA CONTATO</a></p>
+    </footer>
+
+    <script>
+        const itensCarrinho = document.getElementById('itens-carrinho');
+        const totalElement = document.getElementById('total');
+        const limparCarrinhoBtn = document.getElementById('limpar-carrinho');
+        const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+        function atualizarCarrinho() {
+            itensCarrinho.innerHTML = '';
+
+            let total = 0;
+            carrinho.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('item-carrinho');
+                itemElement.innerHTML = `
+                    <img src="${item.imagem}" alt="${item.nome}">
+                    <div>
+                        <h3>${item.nome}</h3>
+                        <p>R$ ${item.preco.toFixed(2)}</p>
+                        <button data-index="${index}" class="remover-item">Remover</button>
+                    </div>
+                `;
+                itensCarrinho.appendChild(itemElement);
+
+                total += item.preco;
+            });
+            totalElement.textContent = `Total: R$ ${total.toFixed(2)}`;
+        }
+        itensCarrinho.addEventListener('click', (event) => {
+            if (event.target.classList.contains('remover-item')) {
+                const index = event.target.getAttribute('data-index');
+                carrinho.splice(index, 1);
+                localStorage.setItem('carrinho', JSON.stringify(carrinho));
+                atualizarCarrinho();
+            }
+        });
+        limparCarrinhoBtn.addEventListener('click', () => {
+    localStorage.removeItem('carrinho');
+    carrinho.length = 0;
+    atualizarCarrinho();
+});
+        limparCarrinhoBtn.addEventListener('click', () => {
+            localStorage.removeItem('carrinho');
+            atualizarCarrinho();
+        });
+        atualizarCarrinho();
+    </script>
+</body>
+</html>

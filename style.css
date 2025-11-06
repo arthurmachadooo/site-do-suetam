@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #111;
+    color: white;
+    line-height: 1.6;
+}
+
+a {
+    
+    text-decoration: none;
+    color: white;
+}
+
+header {
+    background-color: black;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #70201a;
+}
+
+header .logo img{
+height: 150px;
+
+}
+header nav ul {
+    display: flex;
+    list-style: none;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #bbb;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    color: #70201a;
+}
+
+#banner{
+    height: 600px;
+    width: 1901px;
+}
+
+
+.produtos {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+}
+
+.produto {
+    text-align: center;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.produto:hover {
+    transform: scale(1.05);
+}
+
+.produto img {
+    max-width: 100%;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.produto h3 {
+    margin: 20px 0;
+    font-size: 1.5rem;
+}
+
+.produto p {
+    font-size: 1.2rem;
+    color: white;
+}
+
+
+footer {
+    background-color: #111;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    color: #bbb;
+    font-size: 0.9rem;
+}
+
+footer p a {
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer p a:hover {
+    color: #c0392b;
+}   
+
+button{
+    background-color: green; 
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px black;
+    cursor: pointer;
+    transition: transform 1.0s ease, box-shadow 1.0s ease, opacity 1.0s ease;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+button:hover{
+    transform: scale(1.2);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); 
+  opacity: 0.9; 
+}
+@media (max-width: 768px) {
+    header {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        padding: 10px;
+    }
+
+    header .logo img {
+        height: 80px; 
+    }
+
+    header nav ul {
+        flex-direction: row; 
+        justify-content: flex-end; 
+        align-items: center;
+        gap: 10px; 
+    }
+
+    header nav ul li {
+        margin: 0; 
+    }
+
+    .produtos {
+        gap: 15px;
+    }
+
+    .produto {
+        width: 48%;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+
+    header .logo img {
+        height: 60px; 
+    }
+
+    header nav ul {
+        flex-direction: row; 
+        justify-content: flex-end; 
+        gap: 8px; 
+    }
+
+    header nav ul li {
+        margin: 0;
+    }
+
+    .produtos {
+        flex-direction: column;
+    }
+
+    .produto {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .produto img {
+        max-height: 150px;
+    }
+
+    #banner {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+    }
+}
